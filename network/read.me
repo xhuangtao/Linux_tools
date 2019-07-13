@@ -1,0 +1,1 @@
+CentOS现有的虚拟机是没有办法联网的，得先配置网络：vi /etc/resolv.conf 添加：nameserver 8.8.8.8 再 vi /etc/sysconfig/network-scripts/ifcfg-ens33 修改：ONBOOT=NO 改成 ONBOOT=yes 再：service network restart 重启网络可以连接外网， 再  yum -y install net-tools   安装网络工具查看IP。 再根据需要：yum -y groupinstall "GNOME Desktop" 添加图形界面。 
