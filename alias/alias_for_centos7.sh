@@ -317,3 +317,24 @@ insjenkins(){
     wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
     
 }
+# add 20190714
+echo_color() {
+    if [ $1 == "green" ]; then
+        echo -e "\033[32;40m$2\033[0m"
+    elif [ $1 == "red" ]; then
+        echo -e "\033[31;40m$2\033[0m"
+    fi
+}
+# add 20190714  pings直接检查ping通的情况,IP_LIST中填写IP或域名地址
+# link：https://mp.weixin.qq.com/s/A3z0E8bZaE4gi6VYASEzmQ
+pings(){
+    IP_LIST="www.qq.com www.baidu.com 192.168.109.1"
+for IP in $IP_LIST; do
+    ping_success_status
+    echo "$IP Ping is failure!"
+
+    if ping -c 1 $IP >/dev/null; then
+        echo "$IP Ping is successful."
+    fi
+done
+}
