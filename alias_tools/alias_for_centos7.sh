@@ -345,10 +345,10 @@ pings(){
 random(){
   if [ ! -n "$1" ]
   then
-   echo "please input the random number after it: random 8 ";
+   echo "please input the random number after it: random 8 ";  #判断是否输入参数
      else
       if [[ $1 == *[!0-9]* ]]; then
-         echo "please input a number after 'random' command,like: random 12 ";
+         echo "please input a number after 'random' command,like: random 12 "; #判断是否为正整数
         else
         if    [ "$1" -le 24 ]   # 24位以内的随机数
         then
