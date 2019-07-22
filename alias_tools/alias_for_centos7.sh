@@ -311,7 +311,11 @@ fi
 }
 #如果是文件直接cd到文件所在的目录，如果是目录直接到达该目录
 #if dir,cd into it. if file ,cd into where the file is
-goto(){ [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
+gt(){ 
+     dirname=$(find  -depth  -name $1)
+     cd $dirname;
+
+ }
 
 insjenkins(){
     wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
