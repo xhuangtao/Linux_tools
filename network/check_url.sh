@@ -1,6 +1,6 @@
 #!/bin/bash
 #check url and return the http code
-        HTTP_CODE=$(curl -o /dev/null --connect-timeout 3 -s -w "%{http_code}" $1)
+        HTTP_CODE=$(curl -o /dev/null --connect-timeout 3 -s -w "%{http_code}" $1) #传入第一个参数作为url
         case $HTTP_CODE in
                  "000")
                  echo -e "The HTTP_CODE is"" \033[31m$HTTP_CODE.\033[0m" " $1 is   Unable to access!" 
@@ -129,6 +129,6 @@
                  echo -e "The HTTP_CODE is"" \033[31m$HTTP_CODE.\033[0m" " $1 is  HTTP Version Not Supported!" 
                  ;;
                  *)
-                 echo "$URL_LIST  Access failure!!"
+                 echo -e " \033[31m  Please in a url as a parameter, like:  check_url.sh www.abc.com !\033[0m"
                  ;;
                 esac
