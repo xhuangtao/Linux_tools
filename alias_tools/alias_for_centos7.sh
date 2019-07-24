@@ -75,7 +75,7 @@ alias nt='netstat -anp'
 alias p='ps -ef'
 alias pi='ping www.baidu.com'
 alias pi5='ping -c 5 '   #ping，5次结束
-alias psg='ps -ef|grep '
+alias psg='ps -ef|grep -v grep|grep '  #需要排除grep程序
 alias pst='echo " Start time of the PID:  "; func(){  ps -p $1 -o lstart;};func'
 alias rdu='df -h |awk '\''$6~/^\/$/{print $5,$6}'\'' '
 alias rm='rm -i'
@@ -309,13 +309,13 @@ else
     history | awk '{print $4}' | sort | uniq -c | sort -nr | head -n 10
 fi
 }
-#如果是文件直接cd到文件所在的目录，如果是目录直接到达该目录
+#如果是文件直接cd到文件所在的目录，如果是目录直接到达该目录,只能对当前目录的子目录操作不完善
 #if dir,cd into it. if file ,cd into where the file is
-gt(){ 
-     dirname=$(find  -depth  -name $1)
-     cd $dirname;
+#goto() { 
+#     dirname=$(find  -depth  -name $1)
+#     cd $dirname;
 
- }
+# }
 
 insjenkins(){
     wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
