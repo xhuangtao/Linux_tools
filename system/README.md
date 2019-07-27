@@ -12,3 +12,6 @@
 执行结果例如：[user@system]# ./disk_check.sh   
 ` ~~~~~~(tencentHost) at 2019-07-27 16:21:46~blank means no warning~~~~~~~~~~~~`   
  `INFO:  The usage of the fowllowing Partition:   /dev/vda1  is:   18%! `
+
+##### 5） login_to.sh
+login_to.sh可以登录：host.info文件的中IP列表中机器，前提是配置好公私钥，否则每次需要输入密码。
