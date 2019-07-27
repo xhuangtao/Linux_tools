@@ -12,7 +12,7 @@
                  echo -e "The HTTP_CODE is"" \033[31m$HTTP_CODE.\033[0m" " $1 is  Switching Protocols!" 
                  ;;
                  "200")
-                 echo -e "The HTTP_CODE is"" \033[31m$HTTP_CODE.\033[0m" " $1 is  OK!" 
+                 echo -e "The HTTP_CODE is"" \033[31m$HTTP_CODE.\033[0m" " $1 is  OK to access!" 
                  ;;
                  "201")
                  echo -e "The HTTP_CODE is"" \033[31m$HTTP_CODE.\033[0m" " $1 is  Created!" 

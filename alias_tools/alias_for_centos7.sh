@@ -48,8 +48,8 @@ alias download='aria2c' # aira2 download
 alias dl='aria2c'
 alias diff='colordiff'  #比较文件不同，彩色显示
 alias egrep='egrep --color=auto'  
-alias findd='find -type d -name'  #find  the dirs 查找目录
-alias findf='find -type f -name'  #find  the files 查找文件
+alias findd='find -type d -name'  #find  the dirs 查找当前目录下的目录
+alias findf='find -type f -name'  #find  the files 查找当前目录下的文件
 alias free='free -m'
 alias f=' free -mhwt'
 alias fgrep='fgrep --color=auto'
@@ -310,7 +310,6 @@ else
 fi
 }
 #如果是文件直接cd到文件所在的目录，如果是目录直接到达该目录,只能对当前目录的子目录操作不完善
-#if dir,cd into it. if file ,cd into where the file is
 #goto() { 
 #     dirname=$(find  -depth  -name $1)
 #     cd $dirname;
@@ -377,3 +376,40 @@ random(){
   fi
 fi
 }
+
+cip(){
+    IP=$1
+    if [[ $IP =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+        FIELD1=$(echo $IP|cut -d. -f1)
+        FIELD2=$(echo $IP|cut -d. -f2)
+        FIELD3=$(echo $IP|cut -d. -f3)
+        FIELD4=$(echo $IP|cut -d. -f4)
+        if [ $FIELD1 -le 255 -a $FIELD2 -le 255 -a $FIELD3 -le 255 -a $FIELD4 -le 255 ]; then
+            echo "$IP is an IP."
+        else
+            echo "$IP is not IP!"
+        fi
+    else
+        echo "Format error!"
+    fi
+}
+#check if it's numbers
+cnum() {
+if [[ $1 =~ ^[0-9]+$ ]]; then
+    echo "$1 is Number."
+else
+    echo "$1 is NOT a Number."
+fi
+}
+#给定目录找出包含关键字的文件,查找特定目录先得包含特定关键字的文件
+#find sting in some dir
+finds() {
+DIR=$1
+KEY=$2
+for FILE in $(find $DIR -type f); do
+    if grep $KEY $FILE &>/dev/null; then
+        echo "--> $FILE"
+    fi
+done
+}
+
