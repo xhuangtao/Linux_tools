@@ -9,9 +9,9 @@ MAIL="xhuangtao@126.com"
         
 #read -p "Press any key to continue."
 #
-for IP in $(awk  /^[^#]/'{print $1}'  $HOST_INFO); do  #根据IP循环载入
-    USER=$(awk -v ip=$IP  ip=='$1{print $2}'  $HOST_INFO) #user为host.info文件中第二个参数
-    PORT=$(awk -v ip=$IP  ip=='$1{print $3}' $HOST_INFO) # #port为host.info文件中第三个参数
+for IP in $(awk  /^[^#]/'{print $2}'  $HOST_INFO); do  #根据IP循环载入
+    USER=$(awk -v ip=$IP  ip=='$2{print $3}'  $HOST_INFO) #user为host.info文件中第二个参数
+    PORT=$(awk -v ip=$IP  ip=='$2{print $4}' $HOST_INFO) # #port为host.info文件中第三个参数
     ssh -p $PORT $USER@$IP  df -h | grep -v  tmp | grep dev  > $TMP_FILE  #将df查找的磁盘信息内容存到/tmp/disk.tmp
     HOSTNAME=$(ssh -p $PORT $USER@$IP hostname)   #远端机器名称
     DISK_NAME_LIST=$(cat  $TMP_FILE| awk '{print $1}'|sed ':label;N;s/\n/ /;b label'  ) #sed 用于取消空格，分区的名称
