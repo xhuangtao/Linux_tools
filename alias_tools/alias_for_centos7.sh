@@ -109,14 +109,14 @@ alias topm='ps aux |  head -1 ; ps aux | grep -v PID | sort -rn -k +4 | head'   
 alias tree='tree -C'
 alias tf='tail -f'  #动态查看文件变化
 alias vi='/usr/bin/vim'  #系统 自带的vim7.4
-alias vim='/usr/local/vim8/bin/vim'  #最近安装的vim8
+alias vim8='/usr/local/vim8/bin/vim'  #最近安装的vim8
 alias version='cat /proc/version ; cat /etc/redhat-release'  #显示本机的相关版本信息
 alias ver='cat /proc/version ; cat /etc/redhat-release' #显示本机的相关版本信息
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde' #centos可用Ubuntu 不可用
 alias wl='wc -l'    #统计行数
 alias wgc='brctl show'   # 查看系统网桥 need to "yum install bridge-utils -y"  first 
 alias wl='wc -l'    #统计行数
-alias www='www(){ python -m SimpleHTTPServer $1; }; www' #临时开启HTTP服务，
+alias www='www(){ python -m SimpleHTTPServer $1; }; www' #临时开启HTTP服务
 # ------------------------------------
 # git   alias and function
 # ------------------------------------
