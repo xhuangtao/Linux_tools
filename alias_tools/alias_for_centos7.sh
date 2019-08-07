@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author: Tony Huang  
 # Email: xhuangtao@126.com
-# test_0709fix1
+# test_0807fix1
 ###########################
 #  Linux system admin     #
 ##########################
@@ -43,13 +43,15 @@ alias dka='netstat -nlptua'  # 端口拼音 # Active Internet connections (only 
 alias df="df -h"
 alias du0="du -h --max-depth=0"
 alias du1='du -h --max-depth=1'
-alias dus='du -h  --max-depth=1|sort -r -n -k 1 | grep M --color=auto > /tmp/show_an_sort_dir.tmp ; du -h --max-depth=1|sort -r -n -k 1| grep K --color=auto >> /tmp/show_an_sort_dir.tmp ; du -h --max-depth=1|sort -r -n -k 1| grep 0 --color=auto >> /tmp/show_an_sort_dir.tmp;cat /tmp/show_an_sort_dir.tmp'
+#如此太复杂：alias dus='du -h  --max-depth=1|sort -hr -n -k 1 | grep M --color=auto > /tmp/show_an_sort_dir.tmp ; du -h --max-depth=1|sort -r -n -k 1| grep K --color=auto >> /tmp/show_an_sort_dir.tmp ; du -h --max-depth=1|sort -r -n -k 1| grep 0 --color=auto >> /tmp/show_an_sort_dir.tmp;cat /tmp/show_an_sort_dir.tmp'
+alias dus='du -h  --max-depth=1|sort -rh' # -h参数可根据具体情况排序不管是K还是M
 alias download='aria2c' # aira2 download
 alias dl='aria2c'
 alias diff='colordiff'  #比较文件不同，彩色显示
 alias egrep='egrep --color=auto'  
 alias findd='find -type d -name'  #find  the dirs 查找当前目录下的目录
-alias findf='find -type f -name'  #find  the files 查找当前目录下的文件
+alias findf='find -type f -name'  #find  the files 查找当前目录下的文件 t
+alias finda='sek(){ find . -name $1; }; sek' # 在当前目录查找文件和目录
 alias free='free -m'
 alias f=' free -mhwt'
 alias fgrep='fgrep --color=auto'
@@ -59,13 +61,16 @@ alias grep='grep --color=auto'
 alias gor='go run'   #  for golang 
 alias gob='go build'   #  for golang 
 alias h='hostname'
+alias ipout='curl ipinfo.io/ip'  # 显示对外网的IP
 alias l='ls -CF'
-alias ll='ls -al'   #ls相关，这里--color需要根据终端设
+alias ll='ls -lht' #按修改时间逆序列出文件
+alias la='ls -lhta' #按修改时间逆序列出所有文件
 alias lx='ls -lhBXa'        #sort by extension
 alias lz='ls -lhrSa'        #sort by size
 alias lt='ls -lhrta'        #sort by date    最常用到，ls -rt，按修改时间查看目录下文件
 alias lsd='ls -lhrta |grep "^d" '   #列出所有目录,按修改排序
 alias lsf='ls -lhrta |grep "^-" '   #列出所有文件,按修改排序
+
 alias last='last | head'  #最近访问用户
 # sort  the  files at . 按大小给当前目录下的文件排序
 alias lss='ls -alh | grep "^-" | sort -r -n -k 5 |grep M > /tmp/abc ; ls -alh | grep "^-" | sort -r -n -k 5 |grep K >> /tmp/abc ;ls -alh | grep "^-" | sort -r -n -k 5 |grep -v K|grep -v M  >> /tmp/abc ;cat /tmp/abc'
@@ -75,37 +80,43 @@ alias nt='netstat -anp'
 alias p='ps -ef'
 alias pi='ping www.baidu.com'
 alias pi5='ping -c 5 '   #ping，5次结束
+alias portopen='f(){ /sbin/iptables -I INPUT -p tcp --dport $1 -j ACCEPT; }; f' #iptables开放端口
+alias portclose='f(){ /sbin/iptables -I INPUT -p tcp --dport $1 -j DROP; }; f'f #iptables关闭端口
 alias psg='ps -ef|grep -v grep|grep '  #需要排除grep程序
 alias pst='echo " Start time of the PID:  "; func(){  ps -p $1 -o lstart;};func'
 alias rdu='df -h |awk '\''$6~/^\/$/{print $5,$6}'\'' '
 alias rm='rm -i'
 alias rmlog='rm *.log;rm *.log.*'
 alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \; >> /dev/null 2>&1'  #递归删除目录下所有pyc后缀文件
-alias rmlog='rm *.log;rm *.log.*'
+alias rmlog='rm *.log;rm *.log.*' 
 alias sethost='hostnamectl set-hostname $1'
 # sort  the DIRs at .  给当前目录排序
-alias sd='du -h  --max-depth=1|sort -r -n -k 1 | grep M --color=auto > /tmp/show_an_sort_dir.tmp ; du -h --max-depth=1|sort -r -n -k 1| grep K --color=auto >> /tmp/show_an_sort_dir.tmp ; du -h --max-depth=1|sort -r -n -k 1| grep 0 --color=auto >> /tmp/show_an_sort_dir.tmp;cat /tmp/show_an_sort_dir.tmp'
+alias sd='du -h  --max-depth=1|sort -rh -k 1' #-h 参数human readable 
 # sort  the  files at . 给当前目录下的文件排序
-alias sf='ls -alh | grep "^-" | sort -r -n -k 5 |grep M > /tmp/abc ; ls -alh | grep "^-" | sort -r -n -k 5 |grep K >> /tmp/abc ;ls -alh | grep "^-" | sort -r -n -k 5 |grep -v K|grep -v M  >> /tmp/abc ;cat /tmp/abc'
+alias sf='ls -alh|sort -rh -k 5'
 alias show='ls -al'
 alias sip='ip addr show |grep -E "inet"|grep -E  "eth0|ens33"' #显示所有ip信息
 alias sipa='ip addr show|grep "inet"| grep -v "inet6"' # #显示所有ip信息，包括本机
 alias ssh='ssh -2'
 alias sl='ls'
 alias s='systemctl'
+alias sysen='systemctl list-unit-files --type=service | grep enabled | more'  #显示系统自启动
+alias sysdis='systemctl list-unit-files --type=service | grep disabled | more' #显示系统非自启动
+alias size='size(){ du -sh $1* | sort -hr; }; size'  #查看当前或者指定目录下各文件夹内容的大小
+alias sek='f(){ find . -name $1; }; f' # 在当前目录查找文件和目录
 alias topc='ps aux  |  head  -1 ;  ps aux  | grep -v PID | sort -rn -k +3 |  head' #显示最占用CPU的进程，并降序排序
 alias topm='ps aux |  head -1 ; ps aux | grep -v PID | sort -rn -k +4 | head'   #显示最占用mem内存的进程，并降序排序
 alias tree='tree -C'
 alias tf='tail -f'  #动态查看文件变化
-alias vi='/usr/bin/vim'  #centos7 自带的vim7.4
+alias vi='/usr/bin/vim'  #系统 自带的vim7.4
 alias vim='/usr/local/vim8/bin/vim'  #最近安装的vim8
 alias version='cat /proc/version ; cat /etc/redhat-release'  #显示本机的相关版本信息
 alias ver='cat /proc/version ; cat /etc/redhat-release' #显示本机的相关版本信息
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde' #centos可用Ubuntu 不可用
 alias wl='wc -l'    #统计行数
 alias wgc='brctl show'   # 查看系统网桥 need to "yum install bridge-utils -y"  first 
 alias wl='wc -l'    #统计行数
-
+alias www='www(){ python -m SimpleHTTPServer $1; }; www' #临时开启HTTP服务，
 # ------------------------------------
 # git   alias and function
 # ------------------------------------
@@ -148,6 +159,7 @@ alias gdown='git fetch && git rebase'  #下载源码覆盖当下
 alias d='docker'
 alias dm='docker image'
 alias dms='docker images'
+alias dnet='docker stats --no-stream | sort -k8 -hr | more' #看哪个docker镜像流量用的最多，按照第8个字段大小排序
 # Get latest container ID
 alias dl="docker ps -l -q"
 # Get container process
