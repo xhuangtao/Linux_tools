@@ -69,7 +69,7 @@ alias lx='ls -lhBXa'        #sort by extension
 alias lz='ls -lhrSa'        #sort by size
 alias lt='ls -lhrta'        #sort by date    最常用到，ls -rt，按修改时间查看目录下文件
 alias lsd='ls -lhrta |grep "^d" '   #列出所有目录,按修改排序
-alias lsf='ls -lhrta |grep "^-" '   #列出所有文件,按修改排序
+alias lsf='ls --human-readable --size -1 -S --classify '   #列出所有文件,按修改排序
 
 alias last='last | head'  #最近访问用户
 # sort  the  files at . 按大小给当前目录下的文件排序
@@ -91,9 +91,9 @@ alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \; >> /dev/null 2>&1'  #递归
 alias rmlog='rm *.log;rm *.log.*' 
 alias sethost='hostnamectl set-hostname $1'
 # sort  the DIRs at .  给当前目录排序
-alias sd='du -h  --max-depth=1|sort -rh -k 1' #-h 参数human readable 
-# sort  the  files at . 给当前目录下的文件排序
-alias sf='ls -alh|sort -rh -k 5'
+alias sd='du -h  --max-depth=1|sort -rh -k 1' #-h 参数human readable   >>  sort the dirs
+# sort  the  files at . 给当前目录下的文件排序  
+alias sf='ls -alh|sort -rh -k 5'   #  >>  sort the files
 alias show='ls -al'
 alias sip='ip addr show |grep -E "inet"|grep -E  "eth0|ens33"' #显示所有ip信息
 alias sipa='ip addr show|grep "inet"| grep -v "inet6"' # #显示所有ip信息，包括本机
