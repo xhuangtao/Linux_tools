@@ -170,6 +170,8 @@ alias dpsa="docker ps -a"
 alias di="docker images"
 # Get container IP
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+# docker inspect  查看容器详细信息
+alias din="docker inspect"
 # Run deamonized container, e.g., $dkd base /bin/echo hello
 alias dkd="docker run -d -P"
 # Run interactive container, e.g., $dki base /bin/bash
