@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author: Tony Huang  
 # Email: xhuangtao@126.com
-# test_0807fix1
+# change_0910_fix1
 ###########################
 #  Linux system admin     #
 ##########################
@@ -31,7 +31,9 @@ alias .5='cd ../../../../..'
 alias -- -='cd -'
 alias cds='echo "`pwd`" > ~/.cdsave'  #cd save : save where i am
 alias cdb='cd "`cat ~/.cdsave`"'  # cd back
-alias capp='rpm -qa | grep'
+alias capp='rpm -qa | grep' #查找
+alias cip='ip addr show |grep -E "inet"|grep -E  "eth0|ens33"' #显示所有ip信息
+alias cipa='ip addr show|grep "inet"| grep -v "inet6"' # #显示所有ip信息，包括本机
 alias cls='clear'
 alias c="clear"   #清屏
 alias cp='cp -i'
@@ -95,11 +97,10 @@ alias sd='du -h  --max-depth=1|sort -rh -k 1' #-h 参数human readable   >>  sor
 # sort  the  files at . 给当前目录下的文件排序  
 alias sf='ls -alh|sort -rh -k 5'   #  >>  sort the files
 alias show='ls -al'
-alias sip='ip addr show |grep -E "inet"|grep -E  "eth0|ens33"' #显示所有ip信息
-alias sipa='ip addr show|grep "inet"| grep -v "inet6"' # #显示所有ip信息，包括本机
+
 alias ssh='ssh -2'
 alias sl='ls'
-alias s='systemctl'
+alias s='systemctl' #systemctl for short
 alias sysen='systemctl list-unit-files --type=service | grep enabled | more'  #显示系统自启动
 alias sysdis='systemctl list-unit-files --type=service | grep disabled | more' #显示系统非自启动
 alias size='size(){ du -sh $1* | sort -hr; }; size'  #查看当前或者指定目录下各文件夹内容的大小
