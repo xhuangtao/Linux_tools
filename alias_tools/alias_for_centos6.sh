@@ -58,8 +58,8 @@ alias free='free -m'
 alias f=' free -mhwt'
 # alias fgrep='fgrep --color=auto'
 alias gj='poweroff -i'
-alias gr='grep --color=auto'
-# alias grep='grep --color=auto'
+# alias gr='grep --color=auto'
+# # alias grep='grep --color=auto'
 alias gor='go run'   #  for golang 
 alias gob='go build'   #  for golang 
 alias h='hostname'
