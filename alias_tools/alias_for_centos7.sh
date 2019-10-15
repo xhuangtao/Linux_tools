@@ -41,6 +41,7 @@ alias cq='reboot' # 重启拼音
 alias cqnet='service network restart' # 重启网络 # reboot network
 alias ch='chmod u+x *'    #add execute permission to user
 alias dk='netstat -nlptu'   # 端口拼音   # Active Internet connections (servers and established)
+alias dk1='lsof -iTCP -sTCP:LISTEN -P -n'   #另一种表示方法
 alias dka='netstat -nlptua'  # 端口拼音 # Active Internet connections (only servers)
 alias df="df -h"
 alias du0="du -h --max-depth=0"
