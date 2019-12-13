@@ -119,6 +119,7 @@ alias wl='wc -l'    #统计行数
 alias wgc='brctl show'   # 查看系统网桥 need to "yum install bridge-utils -y"  first 
 alias wl='wc -l'    #统计行数
 alias www='www(){ python2 -m SimpleHTTPServer $1; }; www' #临时开启HTTP服务
+alias pf='pkill -f "$1"' #  以进程名称来kill
 # ------------------------------------
 # git   alias and function
 # ------------------------------------
