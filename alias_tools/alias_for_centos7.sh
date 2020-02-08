@@ -53,8 +53,9 @@ alias dl='aria2c'
 alias diff='colordiff'  #比较文件不同，彩色显示
 alias egrep='egrep --color=auto'  
 alias findd='find -type d -name'  #find  the dirs 查找当前目录下的目录
-alias findf='find -type f -name'  #find  the files 查找当前目录下的文件 t
+alias findf='find -type f -name'  #find  the files 查找当前目录下的文件
 alias finda='sek(){ find . -name $1; }; sek' # 在当前目录查找文件和目录
+alias find100='find / -xdev -size +100M -exec ls -l {} \;'  #查找大于100M空间的文件
 alias free='free -m'
 alias f=' free -mhwt'
 alias fgrep='fgrep --color=auto'
