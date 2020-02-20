@@ -74,7 +74,6 @@ alias lz='ls -lhrSa'        #sort by size
 alias lt='ls -lhrta'        #sort by date    最常用到，ls -rt，按修改时间查看目录下文件
 alias lsd='ls -lhrta |grep "^d" '   #列出所有目录,按修改排序
 alias lsf='ls --human-readable --size -1 -S --classify '   #列出所有文件,按修改排序
-
 alias last='last | head'  #最近访问用户
 # sort  the  files at . 按大小给当前目录下的文件排序
 alias lss='ls -alh | grep "^-" | sort -r -n -k 5 |grep M > /tmp/abc ; ls -alh | grep "^-" | sort -r -n -k 5 |grep K >> /tmp/abc ;ls -alh | grep "^-" | sort -r -n -k 5 |grep -v K|grep -v M  >> /tmp/abc ;cat /tmp/abc'
@@ -99,10 +98,10 @@ alias sd='du -h  --max-depth=1|sort -rh -k 1' #-h 参数human readable   >>  sor
 # sort  the  files at . 给当前目录下的文件排序  
 alias sf='ls -alh|sort -rh -k 5'   #  >>  sort the files
 alias show='ls -al'
-
+alias service='se'   # "service" command  for short
 alias ssh='ssh -2'
 alias sl='ls'
-alias s='systemctl' #systemctl for short
+alias s='systemctl' #"systemctl" command for short
 alias sysen='systemctl list-unit-files --type=service | grep enabled | more'  #显示系统自启动
 alias sysdis='systemctl list-unit-files --type=service | grep disabled | more' #显示系统非自启动
 alias size='size(){ du -sh $1* | sort -hr; }; size'  #查看当前或者指定目录下各文件夹内容的大小
@@ -152,6 +151,7 @@ alias gup='git add .; git commit -m "update" ;git push'  #一步增减至缓存�
 alias gd1='echo "git diff HEAD"; git diff HEAD'
 alias gd2='echo "git diff HEAD^"; git diff HEAD^'
 alias gdown='git fetch && git rebase'  #下载源码覆盖当下
+
 #alias gdv='git diff -w "$@" | vim -R -'
 #alias gcount='git shortlog -sn'
 #alias gexport='git archive --format zip --output'
