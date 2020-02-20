@@ -98,7 +98,7 @@ alias sd='du -h  --max-depth=1|sort -rh -k 1' #-h 参数human readable   >>  sor
 # sort  the  files at . 给当前目录下的文件排序  
 alias sf='ls -alh|sort -rh -k 5'   #  >>  sort the files
 alias show='ls -al'
-alias se='service'   # "service" command  for short
+alias ser='service'   # "service" command  for short
 alias ssh='ssh -2'
 alias sl='ls'
 alias s='systemctl' #"systemctl" command for short
