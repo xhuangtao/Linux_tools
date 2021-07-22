@@ -58,6 +58,7 @@ alias finda='sek(){ find . -name $1; }; sek' # 在当前目录查找文件和目
 alias find100='find / -xdev -size +100M -exec ls -l {} \;'  #查找大于100M空间的文件
 alias free='free -m'
 alias f=' free -mhwt'
+alias fm='sync; echo 1 > /proc/sys/vm/drop_caches'  #  清理内存
 alias fgrep='fgrep --color=auto'
 alias gj='poweroff -i'
 alias gr='grep --color=auto'
